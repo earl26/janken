@@ -25,6 +25,7 @@ function playRound(playerChoice) {
             (playerChoice === 'paper' && computerChoice === 'rock') ||
             playerChoice === 'scissors' && computerChoice === 'paper') {
 
+            winCount += 1;
             return (`You win, ${playerChoice} beats ${computerChoice}.`);
         }
         else if (playerChoice === computerChoice) {
@@ -36,5 +37,30 @@ function playRound(playerChoice) {
     }
     else {
         return (`Sorry ${playerChoice} is not a valid choice.`)
+    }
+}
+
+function winCount(winCount) {
+    winCount = 0;
+    return winCount;
+}
+
+function game(rounds) {
+    winCount();
+    for (let i = 0; i <= 4; i++) {
+        if (winCount === 3) {
+            rounds = 0;
+            winCount = 0;
+            return ('Congratulations, you win!');
+        }
+        else if (rounds === 5) {
+            rounds = 0;
+            winCount = 0;
+            return ('Game over.');
+        }
+        else {
+            playRound();
+            rounds += 1;
+        }
     }
 }
