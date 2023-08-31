@@ -25,46 +25,46 @@ function playRound(playerChoice) {
             (playerChoice === 'paper' && computerChoice === 'rock') ||
             (playerChoice === 'scissors' && computerChoice === 'paper')) {
             
-            return true;
+            console.log(`You win, ${playerChoice} beats ${computerChoice}.`)
+            return (win = true);
         }
         else if (playerChoice === computerChoice) {
-            return ('Tie!');
+            console.log('Tie!');
+            return (win = null);
         }
         else {
-            return false;
+            console.log(`You lose, ${computerChoice} beats ${playerChoice}.`)
+            return (win = false);
         }
     }
     else {
-        return (`Sorry ${playerChoice} is not a valid choice.`)
+        console.log(`Sorry ${playerChoice} is not a valid choice.`)
+        return (win = null);
     }
 }
 
-function game(rounds, winCount, loseCount) {
-    loseCount = 0;
-    winCount = 0;
-    rounds = 0;
-    for (i = 0; i <= 4; i++) {
-        const win = playRound();
-        if (winCount < 3 || loseCount < 3 || rounds <= 4) {
-            if (win === true) {
-                winCount += 1;
-                rounds += 1;
-                console.log(`You win, ${playRound.playerChoice} beats ${playRound.computerChoice}.`)
-            }
-            else if (win === false) {
-                loseCount += 1;
-                rounds += 1;
-                console.log(`You lose, ${playRound.computerChoice} beats ${playRound.playerChoice}.`)
-            }
-            else {
-                console.log(win);
-            }
+function rounds() {
+    playRound();
+    if (win === true) {
+        return (i++);
+    }
+    else if (win === false) {
+        return (j++);
+    }
+}
+
+function game() {
+    for (i = 0, j = 0; i < 3, j < 3;) {
+        rounds();
+        if (i === 3) {
+            console.log('Congratulations, you win the best of 5!');
+            break;
         }
-        else if (winCount === 3 || loseCount < 3 || rounds <= 4) {
-            return ('Congratulations, you win the best of 5!')
-        }
-        else if (winCount < 3 || loseCount === 3 || rounds <= 4) {
-            return ('Sorry, you lose the best of 5.')
+        else if (j === 3) {
+            console.log('Game over, you lose the best of 5.');
+            break;
         }
     }
 }
+
+game();
